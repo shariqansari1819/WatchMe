@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CameraActivity">
+
+    <com.otaliastudios.cameraview.CameraView
+        android:id="@+id/cameraView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true"
+        app:cameraAudio="on"
+        app:cameraCropOutput="false"
+        app:cameraFacing="front"
+        app:cameraFlash="off"
+        app:cameraGrid="off"
+        app:cameraHdr="off"
+        app:cameraPlaySounds="true"
+        app:cameraSessionType="video"
+        app:cameraVideoCodec="deviceDefault"
+        app:cameraVideoQuality="max480p"
+        app:cameraWhiteBalance="auto" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="30dp">
+
+        <com.emrekose.recordbutton.RecordButton
+            android:id="@+id/recordBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:buttonGap="7dp"
+            app:buttonRadius="30dp"
+            app:maxMilisecond="15000"
+            app:progressColor="@color/colorPrimary"
+            app:progressStroke="15"
+            app:recordIcon="@drawable/ic_record" />
+
+
+    </LinearLayout>
+
+</FrameLayout>

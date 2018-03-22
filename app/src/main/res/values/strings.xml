@@ -23,4 +23,9 @@
     <string name="password_des">Your protection is our first priority.</string>
     <string name="your_pass">Your password</string>
     <string name="your_confirm_pass">Confirm your password</string>
+    <string name="log_out">Log out</string>
+    <string name="setting">Setting</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

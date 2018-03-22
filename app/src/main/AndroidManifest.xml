@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -21,14 +23,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.WelcomeActivity" />
-        <activity android:name=".activities.LogInActivity"
-            android:parentActivityName=".activities.WelcomeActivity"/>
-        <activity android:name=".activities.NameActivity"
-            android:parentActivityName=".activities.WelcomeActivity"/>
-        <activity android:name=".activities.EmailActivity"
-            android:parentActivityName=".activities.NameActivity"/>
-        <activity android:name=".activities.PasswordActivity"
-            android:parentActivityName=".activities.EmailActivity"/>
+        <activity
+            android:name=".activities.LogInActivity"
+            android:parentActivityName=".activities.WelcomeActivity" />
+        <activity
+            android:name=".activities.NameActivity"
+            android:parentActivityName=".activities.WelcomeActivity" />
+        <activity
+            android:name=".activities.EmailActivity"
+            android:parentActivityName=".activities.NameActivity" />
+        <activity
+            android:name=".activities.PasswordActivity"
+            android:parentActivityName=".activities.EmailActivity" />
+        <activity android:name=".activities.SetupActivity" />
+        <activity android:name=".activities.CameraActivity"></activity>
     </application>
 
 </manifest>

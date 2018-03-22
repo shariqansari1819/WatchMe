@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.shariqansari.watchme">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.WelcomeActivity" />
+        <activity android:name=".activities.LogInActivity"
+            android:parentActivityName=".activities.WelcomeActivity"/>
+        <activity android:name=".activities.NameActivity"
+            android:parentActivityName=".activities.WelcomeActivity"/>
+        <activity android:name=".activities.EmailActivity"
+            android:parentActivityName=".activities.NameActivity"/>
+        <activity android:name=".activities.PasswordActivity"
+            android:parentActivityName=".activities.EmailActivity"/>
+    </application>
+
+</manifest>

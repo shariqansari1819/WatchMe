@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">WatchMe</string>
+
+    <string name="welcome">Welcome to Watch Me!</string>
+    <string name="journey">Start your journey with Watch Me</string>
+    <string name="create_account">Create Account</string>
+    <string name="log_in">Log In</string>
+    <string name="terms_and_condition">By signing up you are agrred to our terms and conditions.</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="need_a_new_account">Need a new account ?</string>
+    <string name="or">OR</string>
+    <string name="click_here">Click Here!</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="your_name">What\'s your name dude?</string>
+    <string name="name_des">Your name is special for us.</string>
+    <string name="your_name_please">Your name please</string>
+    <string name="continue_name">Continue</string>
+    <string name="email_des">We\'ll not send any spam.</string>
+    <string name="your_email">What\'s your email?</string>
+    <string name="your_email_please">Your email please</string>
+    <string name="your_password">Enter your protected password.</string>
+    <string name="password_des">Your protection is our first priority.</string>
+    <string name="your_pass">Your password</string>
+    <string name="your_confirm_pass">Confirm your password</string>
+</resources>

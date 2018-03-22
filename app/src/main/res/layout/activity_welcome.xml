@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.WelcomeActivity">
+
+    <com.flaviofaria.kenburnsview.KenBurnsView
+        android:id="@+id/kenBurnViewBackgroundWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/welcome_background" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlackTransparent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textViewWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/welcome"
+            android:textColor="@color/colorWhite"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewStartJourneyWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewWelcome"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="@string/journey"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/buttonCreateAccountWelcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewStartJourneyWelcome"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/gradient_button"
+            android:text="@string/create_account"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/buttonLogInWelcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonCreateAccountWelcome"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/white_button"
+            android:text="@string/log_in"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/textViewTermsWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonLogInWelcome"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/terms_and_condition"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -22,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
         <activity android:name=".activities.WelcomeActivity" />
         <activity
             android:name=".activities.LogInActivity"
@@ -35,8 +38,10 @@
         <activity
             android:name=".activities.PasswordActivity"
             android:parentActivityName=".activities.EmailActivity" />
-        <activity android:name=".activities.SetupActivity" />
-        <activity android:name=".activities.CameraActivity"></activity>
+        <activity
+            android:name=".activities.SetupActivity"
+            android:parentActivityName=".activities.HomeActivity" />
+        <activity android:name=".activities.CameraActivity" />
     </application>
 
 </manifest>

@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.SetupActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <include
+        android:id="@+id/appBarSetting"
+        layout="@layout/custom_app_bar" />
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/imageViewProfileSetting"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_below="@+id/appBarSetting"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/man" />
+
+    <EditText
+        android:id="@+id/editTextNameSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewProfileSetting"
+        android:layout_margin="10dp"
+        android:hint="@string/name"
+        android:inputType="textCapWords"
+        android:padding="15dp"
+        android:textColor="@color/colorSecondaryText"
+        android:textColorHint="@color/colorSecondaryText" />
+
+    <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextNameSetting"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/login_button"
+        android:text="@string/update"
+        android:textColor="@color/colorWhite"
+        android:textSize="17sp" />
+
+</RelativeLayout>

@@ -101,6 +101,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNav.OnTabSe
         FirebaseUser firebaseUser = firebaseAuthHome.getCurrentUser();
         if (firebaseUser == null) {
             startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
+            Bungee.slideRight(this);
             finish();
         }
     }

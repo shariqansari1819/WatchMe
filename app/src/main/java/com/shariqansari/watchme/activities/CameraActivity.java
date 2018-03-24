@@ -208,7 +208,7 @@ public class CameraActivity extends AppCompatActivity implements OnRecordListene
     @Override
     public void onRecord() {
         recordCounter++;
-        if (recordCounter >= 1) {
+        if (recordCounter == 1) {
             Log.e("TAG", "onRecord");
             File internalDir = getDir("myvideos", Context.MODE_PRIVATE); //Creating an internal dir;
             fileName = UUID.randomUUID().toString() + ".mp4";

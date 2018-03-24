@@ -38,7 +38,6 @@ public class ProfileFragment extends Fragment {
 
 //    Instance variables...
 
-
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -71,7 +70,7 @@ public class ProfileFragment extends Fragment {
 
     private void loadUserData() {
         alertDialog.show();
-        firebaseFirestore.collection("Users").document(userId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        firebaseFirestore.collection("Users").document(userId).addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(DocumentSnapshot documentSnapshot, FirebaseFirestoreException e) {
                 User user = documentSnapshot.toObject(User.class);

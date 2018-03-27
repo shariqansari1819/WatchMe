@@ -17,29 +17,27 @@ import java.util.ArrayList;
 
 public class PostAdapter extends AAH_VideosAdapter {
 
-    private ArrayList<Posts> postsArrayList = new ArrayList<>();
+    private ArrayList<Posts> postsList = new ArrayList<>();
 
-    public PostAdapter(ArrayList<Posts> postsArrayList) {
-        this.postsArrayList = postsArrayList;
+    public PostAdapter(ArrayList<Posts> postsList) {
+        this.postsList = postsList;
     }
 
     @NonNull
     @Override
     public AAH_CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_post_item, parent, false);
-        return new PostHolder(view);
+        return new PostVideoHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.single_post_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(AAH_CustomViewHolder holder, int position) {
-        String videoUrl = postsArrayList.get(position).getPostUrl();
-//        ((PostHolder) holder).textViewName.setText(post.get(position).getVideo_name());
-        holder.setVideoUrl(MyApplication.getProxy().getProxyUrl(videoUrl + ""));
+//        ((PostVideoHolder) holder).textViewName.setText(postsList.get(position).getVideo_name());
+        holder.setVideoUrl(postsList.get(position).getPostUrl());
     }
 
     @Override
     public int getItemCount() {
-        return postsArrayList.size();
+        return postsList.size();
     }
 
     @Override
@@ -47,9 +45,11 @@ public class PostAdapter extends AAH_VideosAdapter {
         return position;
     }
 
-    class PostHolder extends AAH_CustomViewHolder {
+    class PostVideoHolder extends AAH_CustomViewHolder {
 
-        public PostHolder(View x) {
+        TextView textViewName;
+
+        public PostVideoHolder(View x) {
             super(x);
         }
     }

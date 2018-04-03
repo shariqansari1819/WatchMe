@@ -19,6 +19,7 @@ import com.shariqansari.watchme.R;
 import com.shariqansari.watchme.pojo.User;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import dmax.dialog.SpotsDialog;
 
 /**
@@ -27,7 +28,7 @@ import dmax.dialog.SpotsDialog;
 public class ProfileFragment extends Fragment {
 
     //    Android fields...
-    private CircularImageView circularImageView;
+    private CircleImageView circularImageView;
     private TextView textViewName, textViewUserName;
     private AlertDialog alertDialog;
 

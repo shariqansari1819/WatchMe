@@ -9,11 +9,20 @@ import android.widget.TextView;
 
 import com.allattentionhere.autoplayvideos.AAH_CustomViewHolder;
 import com.allattentionhere.autoplayvideos.AAH_VideosAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.shariqansari.watchme.R;
 import com.shariqansari.watchme.application.MyApplication;
 import com.shariqansari.watchme.pojo.Posts;
+import com.shariqansari.watchme.pojo.User;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PostAdapter extends AAH_VideosAdapter {
 
@@ -30,9 +39,26 @@ public class PostAdapter extends AAH_VideosAdapter {
     }
 
     @Override
-    public void onBindViewHolder(AAH_CustomViewHolder holder, int position) {
-//        ((PostVideoHolder) holder).textViewName.setText(postsList.get(position).getVideo_name());
+    public void onBindViewHolder(final AAH_CustomViewHolder holder, final int position) {
+        String id = postsList.get(position).getUserId();
+        FirebaseFirestore.getInstance().collection("Users").document(id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    User user = task.getResult().toObject(User.class);
+                    String profileImage = user.getUserProfileImage();
+                    String name = user.getUserProfileName();
+                    ((PostVideoHolder) holder).textViewName.setText(name);
+                    Picasso.get()
+                            .load(profileImage)
+                            .into(((PostVideoHolder) holder).circularImageView);
+                } else {
+
+                }
+            }
+        });
         holder.setVideoUrl(postsList.get(position).getPostUrl());
+
     }
 
     @Override
@@ -48,9 +74,12 @@ public class PostAdapter extends AAH_VideosAdapter {
     class PostVideoHolder extends AAH_CustomViewHolder {
 
         TextView textViewName;
+        CircleImageView circularImageView;
 
         public PostVideoHolder(View x) {
             super(x);
+            textViewName = x.findViewById(R.id.textViewUserNamePost);
+            circularImageView = x.findViewById(R.id.imageViewProfilePost);
         }
     }
 }

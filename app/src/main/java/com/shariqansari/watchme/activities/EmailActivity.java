@@ -137,4 +137,11 @@ public class EmailActivity extends AppCompatActivity implements View.OnClickList
     public void afterTextChanged(Editable s) {
 
     }
+
+    public boolean isEmailExist(String email) {
+        boolean exist = false;
+
+        return exist;
+
+    }
 }

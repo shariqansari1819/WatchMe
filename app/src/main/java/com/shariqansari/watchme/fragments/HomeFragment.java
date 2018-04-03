@@ -34,12 +34,19 @@ public class HomeFragment extends Fragment {
     private PostAdapter postAdapter;
     private ArrayList<Posts> postsArrayList = new ArrayList<>();
     private AAH_CustomRecyclerView customRecyclerView;
+    private static HomeFragment homeFragment;
 
     //    Firebase fields...
     private FirebaseFirestore firebaseFirestore;
 
     public HomeFragment() {
         // Required empty public constructor
+    }
+
+    public static HomeFragment newInstance() {
+        if (homeFragment == null)
+            homeFragment = new HomeFragment();
+        return homeFragment;
     }
 
 
@@ -75,7 +82,15 @@ public class HomeFragment extends Fragment {
         customRecyclerView.stopVideos();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        L.T(getActivity(), "Home fragment destroyed.");
+    }
+
     public void loadPosts() {
+        if (postsArrayList.size() > 0)
+            postsArrayList.clear();
         firebaseFirestore.collection("Posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot queryDocumentSnapshots, FirebaseFirestoreException e) {

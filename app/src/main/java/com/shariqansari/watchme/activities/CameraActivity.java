@@ -170,12 +170,7 @@ public class CameraActivity extends AppCompatActivity implements OnRecordListene
                 if (task.isSuccessful()) {
                     File internalDir = getDir("myvideos", Context.MODE_PRIVATE); //Creating an internal dir;
                     File file = new File(internalDir, fileName);
-                    if (file.delete())
-                        L.T(CameraActivity.this, "Deleted");
-                    else
-                        L.T(CameraActivity.this, "Not deleted");
-                    startActivity(new Intent(CameraActivity.this, HomeActivity.class));
-                    finish();
+                    CameraActivity.this.finish();
                     L.T(CameraActivity.this, "Video uploaded successfully.");
                 } else {
                     if (task.getException() != null) {

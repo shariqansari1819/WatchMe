@@ -47,7 +47,7 @@ public class PostAdapter extends AAH_VideosAdapter {
                 if (task.isSuccessful()) {
                     User user = task.getResult().toObject(User.class);
                     String profileImage = user.getUserProfileImage();
-                    String name = user.getUserProfileName();
+                    String name = user.getUserName();
                     ((PostVideoHolder) holder).textViewName.setText(name);
                     Picasso.get()
                             .load(profileImage)

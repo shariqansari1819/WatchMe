@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.shariqansari.watchme.R;
+import com.shariqansari.watchme.extras.L;
 import com.shariqansari.watchme.pojo.User;
 import com.squareup.picasso.Picasso;
 
@@ -31,6 +32,7 @@ public class ProfileFragment extends Fragment {
     private CircleImageView circularImageView;
     private TextView textViewName, textViewUserName;
     private AlertDialog alertDialog;
+    private static ProfileFragment profileFragment;
 
     //    Firebase fields...
     private FirebaseFirestore firebaseFirestore;
@@ -41,6 +43,12 @@ public class ProfileFragment extends Fragment {
 
     public ProfileFragment() {
         // Required empty public constructor
+    }
+
+    public static ProfileFragment newInstance() {
+        if (profileFragment == null)
+            profileFragment = new ProfileFragment();
+        return profileFragment;
     }
 
     @Override
@@ -66,6 +74,12 @@ public class ProfileFragment extends Fragment {
         }
 
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        L.T(getActivity(), "Profile fragment destroyed.");
     }
 
     private void loadUserData() {

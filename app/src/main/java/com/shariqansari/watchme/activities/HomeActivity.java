@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.shariqansari.watchme.R;
 import com.shariqansari.watchme.fragments.HomeFragment;
 import com.shariqansari.watchme.fragments.ProfileFragment;
+import com.shariqansari.watchme.fragments.UsersFragment;
 
 import spencerstudios.com.bungeelib.Bungee;
 
@@ -32,6 +33,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNav.OnTabSe
     //    Android fields...
     private BottomNav bottomNav;
     private Toolbar toolbarHome;
+    private HomeFragment homeFragment;
+    private ProfileFragment profileFragment;
+    private UsersFragment usersFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +48,14 @@ public class HomeActivity extends AppCompatActivity implements BottomNav.OnTabSe
         //   Android fields initialization...
         bottomNav = findViewById(R.id.bottomNav);
         toolbarHome = findViewById(R.id.appBarHome);
+        homeFragment = HomeFragment.newInstance();
+        profileFragment = ProfileFragment.newInstance();
+        usersFragment = UsersFragment.newInstance();
 
         bottomNav.addItemNav(new ItemNav(this, R.drawable.tab_home).addColorAtive(R.color.colorBlack).addColorInative(R.color.colorPrimaryText));
         bottomNav.addItemNav(new ItemNav(this, R.drawable.tab_share).addColorAtive(R.color.colorGradientAccent).addColorInative(R.color.colorGradientAccent));
         bottomNav.addItemNav(new ItemNav(this, R.drawable.tab_profile).addColorAtive(R.color.colorBlack).addColorInative(R.color.colorPrimaryText));
+        bottomNav.addItemNav(new ItemNav(this, R.drawable.tab_share).addColorAtive(R.color.colorBlack).addColorInative(R.color.colorPrimaryText));
         bottomNav.build();
 
         setSupportActionBar(toolbarHome);
@@ -55,7 +63,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNav.OnTabSe
             setAppBarTitle("Home");
         }
 
-        switchFragment(new HomeFragment());
+        initializeFragments();
         bottomNav.selectTab(0);
 
         bottomNav.setTabSelectedListener(this);
@@ -110,18 +118,21 @@ public class HomeActivity extends AppCompatActivity implements BottomNav.OnTabSe
     public void onTabSelected(int i) {
         switch (i) {
             case 0:
-                switchFragment(new HomeFragment());
+                switchFragment(homeFragment);
                 setAppBarTitle("Home");
                 break;
             case 1:
-                switchFragment(new HomeFragment());
+                switchFragment(homeFragment);
                 setAppBarTitle("Home");
                 startActivity(new Intent(HomeActivity.this, CameraActivity.class));
+                bottomNav.selectTab(0);
                 Bungee.slideUp(this);
                 break;
             case 2:
-                switchFragment(new ProfileFragment());
+                switchFragment(profileFragment);
                 setAppBarTitle("Profile");
+            case 3:
+                switchFragment(usersFragment);
         }
     }
 
@@ -132,7 +143,27 @@ public class HomeActivity extends AppCompatActivity implements BottomNav.OnTabSe
 
     public void switchFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerMain, fragment);
+        if (homeFragment == fragment) {
+            fragmentTransaction.hide(profileFragment);
+            fragmentTransaction.hide(usersFragment);
+        } else if (profileFragment == fragment) {
+            fragmentTransaction.hide(homeFragment);
+            fragmentTransaction.hide(usersFragment);
+        } else if (usersFragment == fragment) {
+            fragmentTransaction.hide(homeFragment);
+            fragmentTransaction.hide(profileFragment);
+        }
+        fragmentTransaction.show(fragment);
+        fragmentTransaction.commit();
+    }
+
+    public void initializeFragments() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.fragmentContainerMain, homeFragment, "home");
+        fragmentTransaction.add(R.id.fragmentContainerMain, profileFragment, "profile");
+        fragmentTransaction.add(R.id.fragmentContainerMain, usersFragment, "users");
+        fragmentTransaction.hide(profileFragment);
+        fragmentTransaction.hide(usersFragment);
         fragmentTransaction.commit();
     }
 

@@ -110,7 +110,9 @@ public class PasswordActivity extends AppCompatActivity implements View.OnClickL
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        startActivity(new Intent(PasswordActivity.this, HomeActivity.class));
+                                        Intent intent = new Intent(PasswordActivity.this, HomeActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
                                         Bungee.slideLeft(PasswordActivity.this);
                                         finish();
                                     } else {
